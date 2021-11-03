@@ -74,10 +74,3 @@ api/.c9/
 api/*.launch
 api/.settings/
 api/*.sublime-workspace
-
-# IDE - VSCode
-api/.vscode/*
-api/!.vscode/settings.json
-api/!.vscode/tasks.json
-api/!.vscode/launch.json
-api/!.vscode/extensions.json
