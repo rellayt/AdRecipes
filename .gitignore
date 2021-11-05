@@ -49,6 +49,7 @@ Thumbs.db
 # compiled output
 api/dist
 api/node_modules
+api/.env
 
 # Logs
 api/logs
@@ -58,6 +59,7 @@ api/pnpm-debug.log*
 api/yarn-debug.log*
 api/yarn-error.log*
 api/lerna-debug.log*
+
 
 # OS
 api/.DS_Store

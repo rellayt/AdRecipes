@@ -123,6 +123,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "AdRecipes"
+    }
+  },
+  "defaultProject": "AdRecipes",
+  "cli": {
+    "analytics": "cb91ee37-9d6b-423a-b0d6-1d16e3d148e4"
+  }
 }
