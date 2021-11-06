@@ -2,7 +2,12 @@
   width: 500px;
   height: 500px;
   border-radius: 20px;
-  padding: 42px 42px;
-  box-shadow: rgb(255 255 255 / 10%) 0 1px 1px 0 inset, rgb(50 50 93 / 8%) 0 50px 100px -20px, rgb(0 0 0 / 8%) 0px 30px 60px -30px;
+  padding: 40px 48px;
+  box-shadow: rgb(255 255 255 / 10%) 0 1px 1px 0 inset, rgb(50 50 93 / 8%) 0 50px 50px -20px, rgb(0 0 0 / 8%) 0px 20px 60px -30px;
   background: var(--white);
+  border: solid 1px rgb(50 50 93 / 5%);
+  &__header {
+    font-size: 36px;
+    margin-bottom: 24px;
+  }
 }

@@ -6,7 +6,7 @@ $crypto-accent: mat-palette($mat-pink, A200, A100, A400);
 $crypto-warn: mat-palette($mat-red);
 $crypto-theme: mat-light-theme($crypto-primary, $crypto-accent, $crypto-warn);
 @include angular-material-theme($crypto-theme);
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap');
 
 * {
   margin: 0;
@@ -30,7 +30,7 @@ body {
 
 body {
   margin: 0;
-  font-family: "Poppins", Roboto, sans-serif;
+  font-family: "Source Sans Pro", Roboto, sans-serif;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
