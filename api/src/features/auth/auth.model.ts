@@ -10,6 +10,6 @@ export interface RegisterCredentials extends BaseCredentials {
 }
 
 export interface TokenCredentials {
-  token: string;
+  accessToken: string;
   refreshToken: string;
 }

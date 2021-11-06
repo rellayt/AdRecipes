@@ -5,7 +5,6 @@ import { from, map, Observable, of, switchMap, tap } from 'rxjs';
 import { firestore } from 'firebase-admin/lib/firestore/firestore-namespace';
 import { FirebaseAuthAdmin } from './firebase-auth-admin.abstract';
 import QueryDocumentSnapshot = firestore.QueryDocumentSnapshot;
-import QuerySnapshot = firestore.QuerySnapshot;
 import CollectionReference = firestore.CollectionReference;
 import DocumentData = firestore.DocumentData;
 import { firstElement } from '../../base/utils/first-element';
@@ -25,8 +24,11 @@ export class FirebaseService<T> extends FirebaseAuthAdmin {
 
   create(item: T): Observable<T> {
     return from(this.collection.add(item)).pipe(
+      tap((data) => console.log('data:  ', data)),
       switchMap((documentReference) => documentReference.get()),
+      tap((data) => console.log('data:  ', data)),
       map((snapshot) => snapshot.data() as T),
+      tap((data) => console.log('data:  ', data)),
     );
   }
 

@@ -1,8 +1,7 @@
-import { Body, Controller, Get, Param, Post } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post, Res } from '@nestjs/common';
 import { RecipesService } from './recipes.service';
 import { Observable } from 'rxjs';
 import { Recipe } from './recipes.model';
-import { UsersService } from '../users/users.service';
 
 @Controller('recipes')
 export class RecipesController {
@@ -12,12 +11,14 @@ export class RecipesController {
     return this.recipesService.findAll();
   }
 
-  @Get(':id') findById(@Param() { id }) {
+  @Get(':id') findById(@Param() { id }): Observable<Recipe> {
     return this.recipesService.findById(id);
   }
 
-  @Post() create(@Body() recipeData: Recipe): Observable<Recipe> {
-    console.log('recipes');
-    return this.recipesService.create(recipeData);
+  @Post() create(
+    @Body() recipeData: Recipe,
+    @Res() { locals },
+  ): Observable<Recipe> {
+    return this.recipesService.create(recipeData, locals.userId);
   }
 }

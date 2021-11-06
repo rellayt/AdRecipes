@@ -14,15 +14,16 @@ export class RecipesService {
     private usersService: UsersService,
   ) {}
 
-  private getUserInformationSource(
-    id = 'z8lNVDziAKNZVo1ZUIIs9MLdSCQ2',
-  ): Observable<UserInformation> {
-    return this.usersService
-      .findById(id)
-      .pipe(map(({ uid: userId, displayName }) => ({ userId, displayName })));
+  private getUserInformationSource(id): Observable<UserInformation> {
+    return this.usersService.findById(id).pipe(
+      map(({ uid: userId, displayName }) => ({
+        userId,
+        authorName: displayName,
+      })),
+    );
   }
 
-  create(recipe: Recipe, userId?: string): Observable<Recipe> {
+  create(recipe: Recipe, userId: string): Observable<Recipe> {
     const recipeToCreate = {
       id: uuid(),
       createdAt: new Date().toString(),
@@ -36,7 +37,7 @@ export class RecipesService {
     );
   }
 
-  findById(id: string): Observable<any> {
+  findById(id: string): Observable<Recipe> {
     return this.firebaseService.findById(id);
   }
 

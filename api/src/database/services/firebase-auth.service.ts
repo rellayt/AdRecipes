@@ -27,7 +27,7 @@ export class FirebaseAuthService extends FirebaseAuthAdmin {
       email,
       password,
     );
-    return from(loginPromise).pipe(map(({ user }) => user));
+    return from(loginPromise).pipe(map(({ user }) => ({ ...user })));
   }
 
   register({
@@ -47,6 +47,5 @@ export class FirebaseAuthService extends FirebaseAuthAdmin {
         displayName,
       })),
     );
-    // return of(null);
   }
 }

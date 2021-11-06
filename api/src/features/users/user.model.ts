@@ -1,5 +1,8 @@
-import { RegisterCredentials, TokenCredentials } from '../auth/auth.model';
+import { TokenCredentials } from '../auth/auth.model';
 
-export interface User extends Omit<RegisterCredentials, 'password'> {
+export interface UserWithCredentials {
+  id: string;
+  displayName: string;
+  email: string;
   tokenCredentials?: TokenCredentials;
 }

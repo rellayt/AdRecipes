@@ -1,13 +1,19 @@
-import { Module } from '@nestjs/common';
+import { MiddlewareConsumer, Module, NestModule } from '@nestjs/common';
 import { RecipesModule } from './recipes/recipes.module';
 import { DatabaseModule } from '../database/database.module';
 import { FirebaseService } from '../database/services/firebase.service';
 import { AuthModule } from './auth/auth.module';
 import { UsersModule } from './users/users.module';
+import { JwtTokenMiddleware } from '../middlewares/jwt-token.middleware';
+import { JwtTokenService } from './auth/jwt-token.service';
 
 @Module({
   imports: [DatabaseModule, RecipesModule, AuthModule, UsersModule],
   controllers: [],
-  providers: [FirebaseService],
+  providers: [FirebaseService, JwtTokenService],
 })
-export class FeaturesModule {}
+export class FeaturesModule implements NestModule {
+  configure(consumer: MiddlewareConsumer) {
+    consumer.apply(JwtTokenMiddleware).forRoutes('recipes');
+  }
+}
