@@ -1,0 +1,45 @@
+nav {
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+  height: 60px;
+
+  background-color: var(--orange);
+
+  &>* {
+    display: grid;
+    place-items: center;
+  }
+  * {
+    height: inherit;
+  }
+  .logo {
+    grid-row: 1;
+    justify-content: center;
+
+    color: #fff;
+  }
+  .links {
+    grid-row: 1;
+    section {
+      width: 60%;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      a {
+        width: 50%;
+        height: 80%;
+        border-radius: 10px;
+        display: grid;
+        place-items: center;
+        cursor: pointer;
+        color: #fff;
+        transition: 200ms;
+
+        &:hover {
+          background-color: white;
+          color: var(--orange);
+        }
+      }
+    }
+  }
+}
