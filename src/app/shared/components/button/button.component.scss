@@ -1,32 +1,38 @@
 .button {
-  color: var(--white);
-  background: var(--blue);
+  color: var(--black);
+  background: var(--orange);
   font-size: var(--m);
   padding: 7px 25px;
   display: flex;
   justify-content: center;
   align-items: center;
   width: 120px;
+  border-radius: 10px;
+
   &:disabled {
     background: var(--gray);
     color: var(--black);
   }
+
   svg {
     transform: scale(0.1);
     padding: 5px;
   }
+
   mat-spinner {
     zoom: 0.34;
   }
 }
+
 ::ng-deep {
   app-button {
     .mat-ripple-element {
-      background: #d4d4d450;
+      background: var(--blackRipple);
     }
   }
+
   .mat-progress-spinner circle,
   .mat-spinner circle {
-    stroke: var(--blue);
+    stroke: var(--orange);
   }
 }

@@ -58,7 +58,7 @@ body {
 }
 
 .snackBar-success {
-  background-color: var(--blue);
+  background-color: var(--orange);
   color: var(--white);
 }
 
@@ -69,8 +69,9 @@ body {
 
 :root {
   --white: #f7f7f7;
-  --black: #0c0c0c;
-  --orange: #d0721f;
+  --black: #212121;
+  --blackRipple: rgba(33,33,33,0.15);
+  --orange: #ffbb00;
   --gray: #dfdfdf;
   --error: #d83434;
   --gray-low-opacity: #b5bfc766;
