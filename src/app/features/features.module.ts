@@ -5,6 +5,7 @@ import { RecipeDetailsComponent } from './recipe-details/recipe-details.componen
 import { AddRecipeComponent } from './add-recipe/add-recipe.component';
 import { RecipeListComponent } from './recipe-list/recipe-list.component';
 import { HomeComponent } from './home/home.component';
+import { FeaturesRoutingModule } from './features-routing.module';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,7 @@ import { HomeComponent } from './home/home.component';
     RecipeDetailsComponent,
     PersonalRecipesComponent,
   ],
-  imports: [SharedModule],
+  imports: [SharedModule, FeaturesRoutingModule],
   providers: [],
 })
 export class FeaturesModule {}
