@@ -1,0 +1,27 @@
+mat-form-field {
+  width: 100%;
+  textarea {
+    resize: none;
+  }
+}
+
+::ng-deep {
+  .mat-form-field-appearance-fill .mat-form-field-flex {
+    border-radius: 7px 7px 0 0;
+    background-color: rgba(0, 0, 0, 0.025);
+    box-shadow: inset 0 0 5px 0 var(--gray-low-opacity);
+    padding: 0.45em 0.45em 0 0.45em !important;
+  }
+
+  .mat-form-field.mat-focused .mat-form-field-ripple {
+    background-color: var(--orange);
+  }
+
+  .mat-form-field.mat-focused .mat-form-field-label {
+    color: var(--orange);
+  }
+
+  .mat-form-field-infix input {
+    transform: translateY(3px);
+  }
+}

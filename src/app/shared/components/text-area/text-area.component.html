@@ -1,1 +1,6 @@
-<p>text-area works!</p>
+<mat-form-field appearance='fill'>
+  <mat-label>
+    <ng-content></ng-content>
+  </mat-label>
+  <textarea [formControl]='control' matInput rows='15'></textarea>
+</mat-form-field>

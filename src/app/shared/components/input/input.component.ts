@@ -1,20 +1,19 @@
-import { Component, Input, OnInit, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-input',
   templateUrl: './input.component.html',
-  styleUrls: ['./input.component.scss']
+  styleUrls: ['./input.component.scss'],
 })
 export class InputComponent {
+  @Input() control = new FormControl('');
 
-  @Input() control = new FormControl('')
-  @Output() onEnter = new EventEmitter<boolean>()
+  @Output() onEnter = new EventEmitter<void>();
 
-  constructor() { }
+  constructor() {}
 
   onKeyup() {
-    this.onEnter.emit(true)
+    this.onEnter.emit();
   }
-
 }

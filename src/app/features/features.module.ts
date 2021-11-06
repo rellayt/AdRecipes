@@ -6,6 +6,8 @@ import { AddRecipeComponent } from './add-recipe/add-recipe.component';
 import { RecipeListComponent } from './recipe-list/recipe-list.component';
 import { HomeComponent } from './home/home.component';
 import { FeaturesRoutingModule } from './features-routing.module';
+import { SignInComponent } from './auth/sign-in/sign-in.component';
+import { SignUpComponent } from './auth/sign-up/sign-up.component';
 
 @NgModule({
   declarations: [
@@ -14,6 +16,8 @@ import { FeaturesRoutingModule } from './features-routing.module';
     AddRecipeComponent,
     RecipeDetailsComponent,
     PersonalRecipesComponent,
+    SignInComponent,
+    SignUpComponent,
   ],
   imports: [SharedModule, FeaturesRoutingModule],
   providers: [],

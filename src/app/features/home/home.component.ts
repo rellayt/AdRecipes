@@ -9,6 +9,7 @@ export class HomeComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {}
+
   costam(): void {
     console.log('elo');
   }

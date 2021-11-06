@@ -35,6 +35,9 @@ import { CommonModule } from '@angular/common';
     ButtonComponent,
     InputComponent,
     HeaderComponent,
+    TextAreaComponent,
+    CardComponent,
+    SelectComponent,
   ],
 })
 export class SharedModule {}
