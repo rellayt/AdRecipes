@@ -1,1 +1,8 @@
-<p>recipe-tile works!</p>
+<div class='recipe-tile'>
+  <div class='recipe-tile__information'>
+    <p class='recipe-tile__time'>{{recipeTileInfo.time}}</p>
+    <p class='recipe-tile__name'>{{recipeTileInfo.name}}</p>
+    <p class='recipe-tile__author'>{{recipeTileInfo.author}}</p>
+  </div>
+   <img [src]='src' alt='Recipe image' [ngClass]='size === "normal" ? "normal-width" : "big-width" '/>
+</div>

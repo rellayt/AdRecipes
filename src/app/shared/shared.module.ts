@@ -10,6 +10,9 @@ import { TextAreaComponent } from './components/text-area/text-area.component';
 import { CardComponent } from './components/card/card.component';
 import { SelectComponent } from './components/select/select.component';
 import { CommonModule } from '@angular/common';
+import { ValidationFeedbackComponent } from './components/validation-feedback/validation-feedback.component';
+import { SnackBarService } from './services/snackbar.service';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   imports: [
@@ -18,6 +21,7 @@ import { CommonModule } from '@angular/common';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    RouterModule,
   ],
   declarations: [
     ButtonComponent,
@@ -27,6 +31,7 @@ import { CommonModule } from '@angular/common';
     TextAreaComponent,
     CardComponent,
     SelectComponent,
+    ValidationFeedbackComponent,
   ],
   exports: [
     FormsModule,
@@ -38,6 +43,11 @@ import { CommonModule } from '@angular/common';
     TextAreaComponent,
     CardComponent,
     SelectComponent,
+    ValidationFeedbackComponent,
+    RecipeTileComponent,
+    CommonModule,
+    RouterModule,
   ],
+  providers: [SnackBarService],
 })
 export class SharedModule {}

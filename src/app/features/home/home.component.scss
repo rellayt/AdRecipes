@@ -1,0 +1,16 @@
+.home {
+  display: grid;
+  grid-template-rows: 120px 1fr;
+  &__header {
+    font-weight: 600;
+    margin-left: 48px;
+    font-size: 32px;
+  }
+  &__recipes {
+    display: flex;
+    justify-content: center;
+    & > * {
+      margin: 8px;
+    }
+  }
+}

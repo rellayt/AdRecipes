@@ -1,13 +1,26 @@
 .card {
+  --headerHeight: 80px;
+
   width: 500px;
-  height: 500px;
+  height: 100%;
   border-radius: 20px;
   padding: 40px 48px;
   box-shadow: rgb(255 255 255 / 10%) 0 1px 1px 0 inset, rgb(50 50 93 / 8%) 0 50px 50px -20px, rgb(0 0 0 / 8%) 0px 20px 60px -30px;
   background: var(--white);
   border: solid 1px rgb(50 50 93 / 5%);
+
   &__header {
     font-size: 36px;
-    margin-bottom: 24px;
+    height: var(--headerHeight);
+  }
+
+  &__body {
+    height: calc(var(--height) - var(--headerHeight) - 40px * 2);
+  }
+
+  @media (max-width: 750px) {
+    width: 100%;
+    height: 100%;
+    padding: 20px 24px;
   }
 }

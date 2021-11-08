@@ -8,9 +8,13 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 export class ButtonComponent {
   @Input() type: string = 'button';
 
+  @Input() isFullWidth;
+
   @Input() isLoading: boolean = false;
 
   @Input() isDisabled: boolean = false;
+
+  @Input() secondary: boolean = false;
 
   @Output() onClick = new EventEmitter<boolean>();
 

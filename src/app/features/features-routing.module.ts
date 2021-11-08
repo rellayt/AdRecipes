@@ -34,8 +34,12 @@ const routes: Routes = [
     component: RecipeListComponent,
   },
   {
-    path: 'recipes/:id',
+    path: 'recipe/:id',
     component: RecipeDetailsComponent,
+  },
+  {
+    path: '**',
+    redirectTo: '',
   },
 ];
 

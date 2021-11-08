@@ -1,12 +1,16 @@
 @media (max-width: 750px) {
   nav {
     grid-template-columns: 1fr 1fr !important;
+
     .logo {
+
     }
+
     .links {
       * {
         transition: 200ms;
       }
+
       .mobile {
         display: grid;
         place-items: center;
@@ -16,6 +20,7 @@
         &:hover {
           background-color: #fff;
           border-radius: 10px;
+
           &::ng-deep.mat-icon {
             color: var(--orange);
           }
@@ -34,6 +39,7 @@
           }
         }
       }
+
       .desktop {
         display: none;
       }
@@ -44,29 +50,43 @@
 @media (min-width: 750px) {
   nav {
     .logo {
+      mat-icon {
+        cursor: pointer;
+        display: flex !important;
+        align-items: center !important;
+        font-size: 35px !important;
+      }
     }
+
     .links {
       .mobile {
         display: none;
       }
+
       .desktop {
         width: 60%;
-        justify-content: space-around;
+        justify-content: flex-end;
         align-items: center;
+
+        app-button {
+          margin: 5px;
+        }
+
         a {
           display: grid;
           place-items: center;
-          width: 50%;
+          margin: 0 25px;
           height: 80%;
 
           border-radius: 10px;
           cursor: pointer;
-          color: #fff;
+          color: var(--black);
+          font-size: 22px;
           transition: 200ms;
 
+
           &:hover {
-            background-color: white;
-            color: var(--orange);
+            opacity: 0.7;
           }
         }
       }
@@ -81,23 +101,23 @@ nav {
 
   background-color: var(--orange);
 
-  &>* {
+  & > * {
     display: grid;
     place-items: center;
   }
-  * {
-    height: inherit;
-  }
+
   .logo {
     grid-row: 1;
     justify-content: center;
 
     color: #fff;
   }
+
   .links {
     display: grid;
     place-items: center;
     grid-row: 1;
+
     section {
       display: flex;
     }

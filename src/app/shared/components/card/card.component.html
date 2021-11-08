@@ -1,6 +1,10 @@
 <div class='card'>
   <header class='card__header'>
-    <h4><ng-content select='[header]'></ng-content></h4>
+    <h4>
+      <ng-content select='[header]'></ng-content>
+    </h4>
   </header>
-  <ng-content></ng-content>
+  <div class='card__body'>
+    <ng-content></ng-content>
+  </div>
 </div>
