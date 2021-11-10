@@ -1,25 +1,35 @@
-<nav>
-  <div class='logo'>
+<div class='header'>
+  <div class='header__logo'>
     <mat-icon routerLink=''>menu_book</mat-icon>
   </div>
-  <div class='links'>
-    <section class='desktop'>
-      <ng-container *ngIf='isAuthenticated$ | async; else authenticated'>
+  <section class='header__body'>
+    <ng-container *ngIf='(user$ | async) as user; else unauthenticated'>
+      <div class='header__inner-body'>
+        <div class='links'>
+          <a routerLink='add-recipe'>Add recipe</a>
+          <a routerLink='my-recipes'>My recipes</a>
+          <a routerLink='recipes'>Recipes</a>
+        </div>
+        <div class='actions'>
+          <p class='actions__user-display-name'>{{user.displayName}}</p>
+          <app-button (click)='logout()' secondary='true'>
+            Logout
+          </app-button>
+        </div>
+      </div>
+    </ng-container>
+    <ng-template #unauthenticated>
+      <div class='auth-actions'>
         <app-button (click)='goToLogin()'>
           Login
         </app-button>
         <app-button (click)='goToRegister()' secondary='true'>
           Register
         </app-button>
-      </ng-container>
-      <ng-template #authenticated>
-        <a routerLink='add-recipe'>Add recipe</a>
-        <a routerLink='my-recipes'>My recipes</a>
-        <a routerLink='recipes'>Recipes</a>
-      </ng-template>
-    </section>
-    <section class='mobile'>
-      <mat-icon>menu</mat-icon>
-    </section>
+      </div>
+    </ng-template>
+  </section>
+  <div class='mobile-icon'>
+    <mat-icon>menu</mat-icon>
   </div>
-</nav>
+</div>

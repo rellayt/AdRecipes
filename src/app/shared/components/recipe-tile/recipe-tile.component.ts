@@ -1,11 +1,6 @@
 import { Component, HostListener, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
-export enum TILE_SIZE {
-  NORMAL = 'normal',
-  BIG = 'big',
-}
-
 interface RecipeTile {
   id: string;
   author: string;
@@ -21,8 +16,6 @@ interface RecipeTile {
 export class RecipeTileComponent {
   src =
     'https://i.dobrzemieszkaj.pl/i/71/99/74/r3/1920/pyszne-przepisy-na-piknik-proste-szybkie-i-smaczne.jpg';
-
-  @Input() size = TILE_SIZE.NORMAL;
 
   @Input() recipeTileInfo: RecipeTile = {
     id: '1',

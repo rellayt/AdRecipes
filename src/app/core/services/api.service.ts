@@ -1,9 +1,12 @@
 import { Injectable } from '@angular/core';
 import { environment } from '../../../environments/environment';
-import { HttpClient, HttpParams } from '@angular/common/http';
-import { throwError } from 'rxjs';
-import { Observable } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
+import {
+  HttpGetMethodOptions,
+  HttpPostMethodOptions,
+} from '../models/HttpMethods.model';
 
 @Injectable()
 export class ApiService<T> {
@@ -13,15 +16,23 @@ export class ApiService<T> {
     return throwError(error.error);
   }
 
-  get(path: string, queryParams?): Observable<T> {
+  get(path: string, options?: HttpGetMethodOptions): Observable<T> {
+    const headers = options?.skipInterception && { headers: { skip: 'true' } };
+    const params = options?.queryParams && { params: options.queryParams };
+
     return this.http
-      .get<T>(`${environment.API_URL}${path}`, { params: queryParams })
+      .get<T>(`${environment.API_URL}${path}`, {
+        ...params,
+        ...headers,
+      })
       .pipe(catchError(ApiService.formatErrors));
   }
 
-  post(path: string, body: T): Observable<T> {
+  post(path: string, options?: HttpPostMethodOptions<T>): Observable<T> {
+    const headers = options?.skipInterception && { headers: { skip: 'true' } };
+
     return this.http
-      .post<T>(`${environment.API_URL}${path}`, { ...body })
+      .post<T>(`${environment.API_URL}${path}`, { ...options.body }, headers)
       .pipe(catchError(ApiService.formatErrors));
   }
 }

@@ -1,11 +1,8 @@
-export interface UserWithCredentials {
-  id: string;
-  displayName: string;
-  email: string;
+export interface UserWithCredentials extends User {
   tokenCredentials: TokenCredentials;
 }
 
-export interface BaseCredentials {
+export interface User {
   email: string;
   password: string;
   displayName?: string;

@@ -2,8 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { RootState } from '../../../core/store/root.state';
 import { Observable } from 'rxjs';
-import { selectIsAuthenticated } from '../../../core/store/auth/auth.selectors';
+import { selectUser } from '../../../core/store/auth/auth.selectors';
 import { Router } from '@angular/router';
+import { User } from '../../../core/models/user.model';
+import { Logout } from '../../../core/store/auth/auth.actions';
 
 @Component({
   selector: 'app-header',
@@ -11,9 +13,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit {
-  isAuthenticated$: Observable<boolean> = this.store.select(
-    selectIsAuthenticated
-  );
+  user$: Observable<User> = this.store.select(selectUser);
 
   constructor(private store: Store<RootState>, private router: Router) {}
 
@@ -25,5 +25,9 @@ export class HeaderComponent implements OnInit {
 
   goToRegister(): void {
     this.router.navigateByUrl('sign-up').then();
+  }
+
+  logout(): void {
+    this.store.dispatch(Logout());
   }
 }

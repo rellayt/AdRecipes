@@ -9,9 +9,18 @@ import { FeaturesRoutingModule } from './features-routing.module';
 import { SignInComponent } from './auth/sign-in/sign-in.component';
 import { SignUpComponent } from './auth/sign-up/sign-up.component';
 import { CoreModule } from '../core/core.module';
-import { StoreModule } from '@ngrx/store';
+import { Store, StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { appEffects, appReducer } from '../core/store';
+import { CookieService } from 'ngx-cookie-service';
+import { RootState } from '../core/store/root.state';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthInterceptorService } from '../core/interceptors/auth-interceptor.service';
+import { isNotUndefined } from '../../../api/src/base/utils/is-not-undefined';
+import {
+  TokenValidation,
+  TokenValidationSuccess,
+} from '../core/store/auth/auth.actions';
 
 @NgModule({
   declarations: [
@@ -30,6 +39,23 @@ import { appEffects, appReducer } from '../core/store';
     CoreModule,
     FeaturesRoutingModule,
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptorService,
+      multi: true,
+    },
+  ],
 })
-export class FeaturesModule {}
+export class FeaturesModule {
+  constructor(
+    private cookieService: CookieService,
+    private store: Store<RootState>
+  ) {
+    const token = cookieService.get('token');
+
+    if (isNotUndefined(token)) {
+      this.store.dispatch(TokenValidation());
+    }
+  }
+}

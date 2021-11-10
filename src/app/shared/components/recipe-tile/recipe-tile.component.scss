@@ -1,18 +1,10 @@
-.normal-width {
-  width: 370px;
-}
-
-.big-width {
-  width: 430px;
-}
-
 .recipe-tile {
   position: relative;
-  display: inline-block;
+  display: block;
   cursor: pointer;
   opacity: 1;
   transition: opacity 250ms ease;
-  width: 100%;
+  //width: 100%;
 
   &__information {
     position: absolute;
@@ -47,6 +39,7 @@
 
   img {
     display: block;
+    width: 100%;
     height: 340px;
     border-radius: 12px;
     filter: grayscale(10%);
