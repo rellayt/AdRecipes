@@ -1,8 +1,6 @@
-<div class='home'>
-  <div class='home__header'>Latest recipes</div>
-  <div class='home__recipes'>
-    <app-recipe-tile></app-recipe-tile>
-    <app-recipe-tile></app-recipe-tile>
-    <app-recipe-tile></app-recipe-tile>
+<app-base-feature-wrapper class='home'>
+  <div header>Latest recipes</div>
+  <div class='home__recipes' *ngIf='(latestRecipes$ | async) as latestRecipes'>
+    <app-recipe-tile *ngFor='let recipe of latestRecipes' [recipeTile]='recipe'></app-recipe-tile>
   </div>
-</div>
+</app-base-feature-wrapper>

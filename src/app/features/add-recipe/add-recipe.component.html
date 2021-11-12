@@ -1,1 +1,15 @@
-<p>add-recipe works!</p>
+<app-base-feature-wrapper class='add-recipe'>
+  <div header>Add recipe</div>
+  <form class='add-recipe__form'>
+    <div class='add-recipe__basic-info'>
+      <h3>Basic information</h3>
+      <app-input>Name</app-input>
+      <app-select [options]='timeOptions'>Time</app-select>
+      <app-text-area>Description</app-text-area>
+    </div>
+    <div class='add-recipe__image-upload'>
+      <h3>Image upload</h3>
+      <app-image-upload></app-image-upload>
+    </div>
+  </form>
+</app-base-feature-wrapper>

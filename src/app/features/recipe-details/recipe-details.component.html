@@ -1,1 +1,8 @@
-<p>recipe-details works!</p>
+<app-base-feature-wrapper class='recipe-details'>
+  <div header>Detailed Recipe</div>
+  <div *ngIf='(recipe$ | async) as recipe' class='recipe-details__content'>
+    <app-recipe-image [authorName]='recipe.authorName' [name]='recipe.name' [time]='recipe.time' [photoUrl]='recipe.photoUrl'></app-recipe-image>
+    <p class='recipe-details__description'>{{recipe.description}}</p>
+    {{recipe.preparingSteps}}
+  </div>
+</app-base-feature-wrapper>

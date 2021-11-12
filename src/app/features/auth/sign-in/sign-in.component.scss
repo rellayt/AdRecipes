@@ -3,13 +3,18 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  animation-name: opacity;
+  animation-duration: 0.6s;
+
   &__body {
     height: 100%;
     display: grid;
     grid-template-rows: repeat(3, 1fr);
+
     div {
       align-self: flex-end;
     }
+
     app-button {
       align-self: flex-end;
     }

@@ -1,0 +1,36 @@
+.personal-recipes {
+  &__list {
+    grid-column: 1/4;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    justify-self: center;
+    animation-name: opacity;
+    animation-duration: 0.6s;
+
+    & > * {
+      margin: 8px;
+    }
+
+    app-recipe-tile {
+      width: 420px;
+    }
+
+    @media (max-width: 1368px) {
+      align-items: center;
+      flex-direction: column;
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media (max-width: 900px) {
+      grid-template-columns: 1fr;
+
+      app-recipe-tile {
+        width: 100%;
+
+        &:first-child {
+          width: 100%;
+        }
+      }
+    }
+  }
+}

@@ -6,10 +6,6 @@ import { FormControl } from '@angular/forms';
   templateUrl: './text-area.component.html',
   styleUrls: ['./text-area.component.scss'],
 })
-export class TextAreaComponent implements OnInit {
+export class TextAreaComponent {
   @Input() control = new FormControl('');
-
-  constructor() {}
-
-  ngOnInit(): void {}
 }

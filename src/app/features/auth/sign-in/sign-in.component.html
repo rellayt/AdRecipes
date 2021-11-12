@@ -4,7 +4,7 @@
     <div [formGroup]='signInForm' class='sign-in__body'>
       <app-input [control]="signInForm.get('email')">E-mail</app-input>
       <app-input [control]="signInForm.get('password')" type='password'>Password</app-input>
-      <app-button [isDisabled]='signInForm.invalid' (onClick)='handleLogin()' isFullWidth='true'>Login</app-button>
+      <app-button [isProcessing]='isProcessing' [isDisabled]='signInForm.invalid' (onClick)='handleLogin()' isFullWidth='true'>Login</app-button>
     </div>
   </app-card>
 </div>

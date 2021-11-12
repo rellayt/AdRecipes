@@ -13,6 +13,8 @@ import { CommonModule } from '@angular/common';
 import { ValidationFeedbackComponent } from './components/validation-feedback/validation-feedback.component';
 import { SnackBarService } from './services/snackbar.service';
 import { RouterModule } from '@angular/router';
+import { BaseFeatureWrapperComponent } from './components/base-feature-wrapper/base-feature-wrapper.component';
+import { ImageUploadComponent } from './components/image-upload/image-upload.component';
 
 @NgModule({
   imports: [
@@ -32,6 +34,8 @@ import { RouterModule } from '@angular/router';
     CardComponent,
     SelectComponent,
     ValidationFeedbackComponent,
+    BaseFeatureWrapperComponent,
+    ImageUploadComponent,
   ],
   exports: [
     FormsModule,
@@ -47,6 +51,8 @@ import { RouterModule } from '@angular/router';
     RecipeTileComponent,
     CommonModule,
     RouterModule,
+    BaseFeatureWrapperComponent,
+    ImageUploadComponent,
   ],
   providers: [SnackBarService],
 })

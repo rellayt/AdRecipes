@@ -2,7 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { RootState } from '../../../core/store/root.state';
 import { Observable } from 'rxjs';
-import { selectUser } from '../../../core/store/auth/auth.selectors';
+import {
+  selectAuthProcessing,
+  selectUser,
+} from '../../../core/store/auth/auth.selectors';
 import { Router } from '@angular/router';
 import { User } from '../../../core/models/user.model';
 import { Logout } from '../../../core/store/auth/auth.actions';
@@ -14,6 +17,9 @@ import { Logout } from '../../../core/store/auth/auth.actions';
 })
 export class HeaderComponent implements OnInit {
   user$: Observable<User> = this.store.select(selectUser);
+
+  authProcessing$: Observable<Boolean> =
+    this.store.select(selectAuthProcessing);
 
   constructor(private store: Store<RootState>, private router: Router) {}
 

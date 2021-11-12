@@ -13,7 +13,7 @@
 
 .button {
   font-size: var(--m);
-  padding: 7px 25px;
+  padding: 6px 25px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -30,7 +30,7 @@
   }
 
   mat-spinner {
-    zoom: 0.34;
+    zoom: 0.35;
   }
 }
 
@@ -43,6 +43,6 @@
 
   .mat-progress-spinner circle,
   .mat-spinner circle {
-    stroke: var(--orange);
+    stroke: var(--black);
   }
 }

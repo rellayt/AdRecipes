@@ -8,6 +8,16 @@ $crypto-theme: mat-light-theme($crypto-primary, $crypto-accent, $crypto-warn);
 @include angular-material-theme($crypto-theme);
 @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap');
 
+@keyframes opacity {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -68,8 +78,8 @@ body {
 }
 
 :root {
-  --white: #f7f7f7;
-  --black: #212121;
+  --white: #f4f4f4;
+  --black: #272727;
   --blackRipple: rgba(33,33,33,0.15);
   --orange: #fab700;
   --gray: #dfdfdf;

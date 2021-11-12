@@ -10,7 +10,7 @@ export class ButtonComponent {
 
   @Input() isFullWidth;
 
-  @Input() isLoading: boolean = false;
+  @Input() isProcessing: boolean = false;
 
   @Input() isDisabled: boolean = false;
 

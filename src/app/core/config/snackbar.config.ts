@@ -30,5 +30,10 @@ export const REGISTER_ERROR = {
 
 export const RECIPE_ADDED = {
   type: 'Success',
-  message: '',
+  message: 'Recipe has been added',
+};
+
+export const RECIPE_ADD_ERROR = {
+  type: 'Error',
+  message: 'Recipe add failure',
 };

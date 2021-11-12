@@ -18,17 +18,15 @@ import { catchError, filter, map, switchMap, tap } from 'rxjs/operators';
 import { Injectable } from '@angular/core';
 import {
   AUTHENTICATED,
-  LOGGED,
   LOGIN_ERROR,
+  NOT_AUTHENTICATED,
   REGISTER_ERROR,
-  REGISTERED,
 } from '../../config/snackbar.config';
 import { SnackBarService } from '../../../shared/services/snackbar.service';
 import { SignInCredentials } from '../../../../../api/src/features/auth/auth.model';
 import { TypedAction } from '@ngrx/store/src/models';
 import { RegisterCredentials } from '../../models/auth.model';
 import { CookieService } from 'ngx-cookie-service';
-import { Action } from 'rxjs/internal/scheduler/Action';
 
 @Injectable({
   providedIn: 'root',
@@ -48,18 +46,13 @@ export class AuthEffects {
       filter(Boolean),
       switchMap(({ email, password }: SignInCredentials) => {
         return this.authService.signIn(email, password).pipe(
-          tap(({ tokenCredentials }: UserWithCredentials) => {
-            this.snackbarService.open(LOGGED);
+          tap(({ tokenCredentials, id }: UserWithCredentials) => {
+            this.cookieService.set('userId', id);
             this.cookieService.set('token', tokenCredentials.accessToken);
           }),
-          map((userWithCredentials: UserWithCredentials) => {
-            this.snackbarService.open(LOGGED);
-            this.cookieService.set(
-              'token',
-              userWithCredentials.tokenCredentials.accessToken
-            );
-            return SignInSuccess({ user: userWithCredentials });
-          }),
+          map((userWithCredentials: UserWithCredentials) =>
+            SignInSuccess({ user: userWithCredentials })
+          ),
           catchError((error) => {
             this.snackbarService.open(LOGIN_ERROR);
             return of(SignInFailure({ error: error }));
@@ -76,8 +69,8 @@ export class AuthEffects {
       filter(Boolean),
       switchMap(({ email, password, displayName }: RegisterCredentials) => {
         return this.authService.register(email, password, displayName).pipe(
-          tap(({ tokenCredentials }: UserWithCredentials) => {
-            this.snackbarService.open(REGISTERED);
+          tap(({ tokenCredentials, id }: UserWithCredentials) => {
+            this.cookieService.set('userId', id);
             this.cookieService.set('token', tokenCredentials.accessToken);
           }),
           map((userWithCredentials: UserWithCredentials) =>
@@ -103,7 +96,9 @@ export class AuthEffects {
             return TokenValidationSuccess({ user });
           }),
           catchError((error) => {
-            this.snackbarService.open(LOGIN_ERROR);
+            this.snackbarService.open(NOT_AUTHENTICATED);
+            this.cookieService.delete('token');
+            this.cookieService.delete('userId');
             return of(TokenValidationFailure({ error: error }));
           })
         );

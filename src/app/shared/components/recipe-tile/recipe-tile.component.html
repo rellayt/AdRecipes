@@ -1,8 +1,8 @@
 <div class='recipe-tile'>
   <div class='recipe-tile__information'>
-    <p class='recipe-tile__time'>{{recipeTileInfo.time}}</p>
-    <p class='recipe-tile__name'>{{recipeTileInfo.name}}</p>
-    <p class='recipe-tile__author'>{{recipeTileInfo.author}}</p>
+    <p class='recipe-tile__time'>{{recipeTile.time}}</p>
+    <p class='recipe-tile__name'>{{recipeTile.name}}</p>
+    <p *ngIf='recipeTile.authorName' class='recipe-tile__author'>{{recipeTile.authorName}}</p>
   </div>
-  <img [src]='src' alt='Recipe image' />
+  <img [src]='recipeTile.photoUrl' alt='Recipe image' />
 </div>

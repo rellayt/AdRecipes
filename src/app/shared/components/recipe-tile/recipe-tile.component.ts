@@ -1,11 +1,12 @@
 import { Component, HostListener, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
-interface RecipeTile {
+export interface RecipeTile {
   id: string;
-  author: string;
+  authorName?: string;
   time: string;
   name: string;
+  photoUrl: string;
 }
 
 @Component({
@@ -14,19 +15,11 @@ interface RecipeTile {
   styleUrls: ['./recipe-tile.component.scss'],
 })
 export class RecipeTileComponent {
-  src =
-    'https://i.dobrzemieszkaj.pl/i/71/99/74/r3/1920/pyszne-przepisy-na-piknik-proste-szybkie-i-smaczne.jpg';
-
-  @Input() recipeTileInfo: RecipeTile = {
-    id: '1',
-    author: 'User1',
-    time: '15 min',
-    name: 'Pizza',
-  };
+  @Input() recipeTile: RecipeTile;
 
   @HostListener('click', ['$event'])
   goToDetails(): void {
-    this.router.navigate(['recipe', this.recipeTileInfo.id]).then();
+    this.router.navigate(['recipe', this.recipeTile.id]).then();
   }
 
   constructor(private router: Router) {}

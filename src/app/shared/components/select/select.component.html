@@ -1,1 +1,9 @@
-<p>select works!</p>
+<mat-form-field appearance='fill' class='select'>
+  <mat-label>
+    <ng-content></ng-content>
+  </mat-label>
+  <mat-select [formControl]='control' [disabled]="isDisabled">
+    <mat-option *ngFor='let option of options' [value]="option.value">{{option.displayName}}</mat-option>
+  </mat-select>
+  <app-validation-feedback *ngIf='control.touched' [control]='control'></app-validation-feedback>
+</mat-form-field>

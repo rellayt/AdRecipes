@@ -16,11 +16,9 @@ import { CookieService } from 'ngx-cookie-service';
 import { RootState } from '../core/store/root.state';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptorService } from '../core/interceptors/auth-interceptor.service';
-import { isNotUndefined } from '../../../api/src/base/utils/is-not-undefined';
-import {
-  TokenValidation,
-  TokenValidationSuccess,
-} from '../core/store/auth/auth.actions';
+import { TokenValidation } from '../core/store/auth/auth.actions';
+import { RecipeImageComponent } from './recipe-details/recipe-image/recipe-image.component';
+import { isNotUndefined } from '../core/utility/is-not-undefined';
 
 @NgModule({
   declarations: [
@@ -31,9 +29,11 @@ import {
     PersonalRecipesComponent,
     SignInComponent,
     SignUpComponent,
+    RecipeImageComponent,
   ],
   imports: [
     StoreModule.forRoot(appReducer),
+    StoreModule.forFeature('recipes', appReducer.recipe),
     EffectsModule.forRoot(appEffects),
     SharedModule,
     CoreModule,

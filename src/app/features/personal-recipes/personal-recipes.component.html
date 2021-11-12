@@ -1,1 +1,6 @@
-<p>personal-recipes works!</p>
+<app-base-feature-wrapper class='personal-recipes'>
+  <div header>My Recipes</div>
+  <div class='personal-recipes__list' *ngIf='(recipes$ | async) as latestRecipes'>
+    <app-recipe-tile *ngFor='let recipe of latestRecipes' [recipeTile]='recipe'></app-recipe-tile>
+  </div>
+</app-base-feature-wrapper>

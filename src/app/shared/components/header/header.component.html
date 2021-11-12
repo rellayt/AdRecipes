@@ -2,7 +2,7 @@
   <div class='header__logo'>
     <mat-icon routerLink=''>menu_book</mat-icon>
   </div>
-  <section class='header__body'>
+  <section [ngStyle]="{'opacity': (authProcessing$ | async) ? '0' : '1'}" class='header__body'>
     <ng-container *ngIf='(user$ | async) as user; else unauthenticated'>
       <div class='header__inner-body'>
         <div class='links'>
@@ -29,7 +29,7 @@
       </div>
     </ng-template>
   </section>
-  <div class='mobile-icon'>
+  <div class='mobile-icon' [ngStyle]="{'opacity': (authProcessing$ | async) ? '0' : '1'}">
     <mat-icon>menu</mat-icon>
   </div>
 </div>

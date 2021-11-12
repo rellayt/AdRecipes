@@ -1,7 +1,7 @@
   <button class='button' [ngClass]='secondary ? "secondary" : "primary"'
           [ngStyle]="{'width': isFullWidth ? '100%' : '120px'}" mat-raised-button [type]='type'
-          [disabled]='isLoading || isDisabled' (click)='clicked()'>
-    <ng-content *ngIf='!isLoading; else loading'></ng-content>
+          [disabled]='isProcessing || isDisabled' (click)='clicked()'>
+    <ng-content *ngIf='!isProcessing; else loading'></ng-content>
     <ng-template #loading>
       <mat-spinner></mat-spinner>
     </ng-template>

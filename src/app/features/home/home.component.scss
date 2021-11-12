@@ -1,19 +1,10 @@
 .home {
-  display: grid;
-  grid-template-rows: 120px calc(100% - 120px);
-  grid-template-columns: repeat(3, 33%);
-
-  &__header {
-    font-weight: 600;
-    margin-left: 48px;
-    font-size: 32px;
-    grid-column: 1/4;
-  }
-
   &__recipes {
     display: flex;
     grid-column: 1/4;
     justify-self: center;
+    animation-name: opacity;
+    animation-duration: 0.6s;
 
     & > * {
       margin: 8px;
