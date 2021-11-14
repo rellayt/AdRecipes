@@ -1,0 +1,14 @@
+<div class='image-upload'>
+  <app-button (onClick)='fileUpload.click()'>
+    Upload
+    <input type='file' class='image-upload__input'
+           (change)='onImageSelected($event)' #fileUpload>
+  </app-button>
+
+  <div class='image-upload__info'>
+    <p class='image-upload__file-name'>{{fileName || "No image uploaded yet."}}</p>
+    <div *ngIf='file' class='image-upload__file'>
+      <img [src]='imageSrc'  alt='Uploaded image'/>
+    </div>
+  </div>
+</div>
