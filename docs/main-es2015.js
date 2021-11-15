@@ -3235,7 +3235,7 @@ __webpack_require__.r(__webpack_exports__);
 // `ng build --prod` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 const environment = {
-    production: false,
+    production: true,
     API_URL: 'http://localhost:3000/api/',
     ad_client: 'ca-pub-3777768585143098',
     ad_slot: 3122538287,

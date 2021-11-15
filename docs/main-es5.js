@@ -6746,7 +6746,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
 
     var environment = {
-      production: false,
+      production: true,
       API_URL: 'http://localhost:3000/api/',
       ad_client: 'ca-pub-3777768585143098',
       ad_slot: 3122538287
