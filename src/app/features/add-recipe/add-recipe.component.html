@@ -3,13 +3,32 @@
   <form class='add-recipe__form'>
     <div class='add-recipe__basic-info'>
       <h3>Basic information</h3>
-      <app-input>Name</app-input>
-      <app-select [options]='timeOptions'>Time</app-select>
-      <app-text-area>Description</app-text-area>
+      <app-input [control]="addRecipeForm.get('name')">Name</app-input>
+      <app-select [control]="addRecipeForm.get('time')" [options]='timeOptions'>Time</app-select>
+      <app-text-area [control]="addRecipeForm.get('description')" >Description</app-text-area>
     </div>
     <div class='add-recipe__image-upload'>
       <h3>Image upload</h3>
-      <app-image-upload></app-image-upload>
+      <app-image-upload (fileEmitter)='onImageChanged($event)'></app-image-upload>
+    </div>
+    <div class='add-recipe__preparing-steps' *ngIf='preparingSteps'>
+      <h3>Preparing steps</h3>
+      <div class='add-recipe__preparing-step' *ngFor='let preparingStep of getControlList(preparingSteps); let i=index'>
+        <p>{{i + 1}}.</p>
+        <app-input [control]='preparingStep'>Step</app-input>
+      </div>
+      <app-button [isFullWidth]='true' (onClick)='addPreparingStep()'>Add preparing step</app-button>
+      <app-button *ngIf='preparingSteps.length > 1' [isFullWidth]='true' [secondary]='true' (onClick)='removeLastPreparingStep()'>Remove preparing step</app-button>
+    </div>
+    <div class='add-recipe__submit'>
+      <app-button [isProcessing]='createRecipeProcessing$ | async' [isDisabled]='this.addRecipeForm.invalid || !image' (onClick)='submit()'>Submit</app-button>
     </div>
   </form>
+  <ng-adsense [adtest]='"on"'></ng-adsense>
+  <ng-adsense
+    [adClient]="'pub-3777768585143098'"
+    [adSlot]='3122538287'
+    [display]="'block'"
+    [width]='320'
+    [height]='108'></ng-adsense>
 </app-base-feature-wrapper>

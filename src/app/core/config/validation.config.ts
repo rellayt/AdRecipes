@@ -5,4 +5,5 @@ export const VALIDATION_CONFIG = {
   taken_email: 'E-mail is taken',
   pattern: 'Invalid data',
   minlength: 'Minimal length is 4',
+  maxlength: 'The maximum length has been exceeded',
 };

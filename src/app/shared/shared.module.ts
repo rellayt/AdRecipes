@@ -15,6 +15,7 @@ import { SnackBarService } from './services/snackbar.service';
 import { RouterModule } from '@angular/router';
 import { BaseFeatureWrapperComponent } from './components/base-feature-wrapper/base-feature-wrapper.component';
 import { ImageUploadComponent } from './components/image-upload/image-upload.component';
+import { AdblockNotificationDialogComponent } from './components/adblock-notification-dialog/adblock-notification-dialog.component';
 
 @NgModule({
   imports: [
@@ -36,6 +37,7 @@ import { ImageUploadComponent } from './components/image-upload/image-upload.com
     ValidationFeedbackComponent,
     BaseFeatureWrapperComponent,
     ImageUploadComponent,
+    AdblockNotificationDialogComponent,
   ],
   exports: [
     FormsModule,

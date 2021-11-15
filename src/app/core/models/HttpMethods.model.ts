@@ -9,5 +9,6 @@ export interface HttpGetMethodOptions extends SkipInterception {
 }
 
 export interface HttpPostMethodOptions<T> extends SkipInterception {
-  body: T;
+  body?: T;
+  formData?: FormData;
 }

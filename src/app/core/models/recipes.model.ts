@@ -15,7 +15,7 @@ export interface RecipeEntry {
   time: string;
   description: string;
   preparingSteps?: string[];
-  image?: Blob;
+  image?: Blob | File;
 }
 
 export interface Recipe extends RecipeEntry, Uuid, TimeStamp, UserInformation {

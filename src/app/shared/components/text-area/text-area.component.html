@@ -2,5 +2,6 @@
   <mat-label>
     <ng-content></ng-content>
   </mat-label>
-  <textarea [formControl]='control' matInput rows='10'></textarea>
+  <textarea [formControl]='control' matInput [rows]='rows'></textarea>
+  <app-validation-feedback *ngIf='control.touched' [control]='control'></app-validation-feedback>
 </mat-form-field>

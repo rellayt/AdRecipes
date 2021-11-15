@@ -25,6 +25,7 @@ import { Recipe, RecipeEntry } from '../../models/recipes.model';
 import { RecipesService } from '../../services/recipes.service';
 import { SnackBarService } from '../../../shared/services/snackbar.service';
 import { CookieService } from 'ngx-cookie-service';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root',
@@ -34,7 +35,8 @@ export class RecipesEffects {
     private actions$: Actions,
     private snackbarService: SnackBarService,
     private recipesService: RecipesService,
-    private cookieService: CookieService
+    private cookieService: CookieService,
+    private router: Router
   ) {}
 
   create: Observable<TypedAction<string>> = createEffect(() =>
@@ -44,7 +46,10 @@ export class RecipesEffects {
       filter(Boolean),
       switchMap(({ image, ...recipe }: RecipeEntry) => {
         return this.recipesService.create(recipe, image).pipe(
-          tap(() => this.snackbarService.open(RECIPE_ADDED)),
+          tap(({ id }) => {
+            this.router.navigate(['recipe', id]).then();
+            this.snackbarService.open(RECIPE_ADDED);
+          }),
           map((recipe: Recipe) => CreateRecipeSuccess({ recipe })),
           catchError((error) => {
             this.snackbarService.open(RECIPE_ADD_ERROR);

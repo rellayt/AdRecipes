@@ -2,7 +2,7 @@
   <mat-label>
     <ng-content></ng-content>
   </mat-label>
-  <input [type]="hide ? 'password' : 'text'" matInput (keyup.enter)='onKeyup()' [formControl]='control' maxlength='35'>
+  <input [type]="hide ? 'password' : 'text'" matInput (keyup.enter)='onKeyup()' [formControl]='control'>
   <button *ngIf='_type === "password"' mat-icon-button matSuffix (click)='hide = !hide'
           [attr.aria-label]="'Hide password'" [attr.aria-pressed]='hide'>
     <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>

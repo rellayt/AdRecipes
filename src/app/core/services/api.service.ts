@@ -30,9 +30,10 @@ export class ApiService<T> {
 
   post(path: string, options?: HttpPostMethodOptions<T>): Observable<T> {
     const headers = options?.skipInterception && { headers: { skip: 'true' } };
+    const body = options.body ? { ...options.body } : options.formData;
 
     return this.http
-      .post<T>(`${environment.API_URL}${path}`, { ...options.body }, headers)
+      .post<T>(`${environment.API_URL}${path}`, body, headers)
       .pipe(catchError(ApiService.formatErrors));
   }
 }

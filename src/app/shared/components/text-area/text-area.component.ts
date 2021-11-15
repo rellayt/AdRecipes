@@ -1,5 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { Component, Input } from '@angular/core';
+import { AbstractControl, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-text-area',
@@ -7,5 +7,7 @@ import { FormControl } from '@angular/forms';
   styleUrls: ['./text-area.component.scss'],
 })
 export class TextAreaComponent {
-  @Input() control = new FormControl('');
+  @Input() control: FormControl | AbstractControl = new FormControl('');
+
+  @Input() rows = 5;
 }

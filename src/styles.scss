@@ -55,6 +55,16 @@ body {
   font-size: var(--m);
 }
 
+.cdk-overlay-backdrop.cdk-overlay-backdrop-showing {
+  background: var(--orangeBackdrop);
+  transition: background 200ms ease;
+}
+
+.mat-dialog-container {
+  border-radius: 15px !important;
+  background: var(--white);
+}
+
 .mat-snack-bar-container {
   .mat-simple-snackbar-action {
     color: var(--white);
@@ -80,8 +90,9 @@ body {
 :root {
   --white: #f4f4f4;
   --black: #272727;
-  --blackRipple: rgba(33,33,33,0.15);
+  --blackRipple: rgba(33, 33, 33, 0.15);
   --orange: #fab700;
+  --orangeBackdrop: rgba(150, 83, 0, 0.30);
   --gray: #dfdfdf;
   --error: #d83434;
   --gray-low-opacity: #b5bfc766;

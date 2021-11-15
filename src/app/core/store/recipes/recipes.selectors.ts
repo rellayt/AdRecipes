@@ -9,6 +9,12 @@ export const selectLatestRecipes = createSelector(
   ({ latestRecipes }) => latestRecipes
 );
 
+export const selectRecipesProcessing = createSelector(
+  RecipesFeature,
+  (recipeState: RecipeState) => recipeState,
+  ({ recipesProcessing }) => recipesProcessing
+);
+
 export const selectAllRecipes = createSelector(
   RecipesFeature,
   (recipeState: RecipeState) => recipeState,

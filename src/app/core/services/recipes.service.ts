@@ -9,17 +9,21 @@ import { map } from 'rxjs/operators';
 export class RecipesService {
   constructor(private apiService: ApiService<Recipe | unknown>) {}
 
-  create(recipe: RecipeEntry, image: Blob): Observable<Recipe | unknown> {
+  create(
+    recipe: RecipeEntry,
+    image: Blob | File
+  ): Observable<Recipe | unknown> {
     const formData = new FormData();
     formData.append('image', image);
 
     Object.entries(recipe).forEach(([key, value]) =>
-      formData.append(key, value)
+      formData.append(key, Array.isArray(value) ? JSON.stringify(value) : value)
     );
 
     const payload: HttpPostMethodOptions<Recipe | unknown> = {
-      body: formData,
+      formData,
     };
+
     return this.apiService.post(`recipes`, payload) as Observable<Recipe>;
   }
 

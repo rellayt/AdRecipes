@@ -79,6 +79,7 @@ const recipesReducerInternal = createReducer(
     const personalRecipes = recipes.filter(({ userId: id }) => id === userId);
     return {
       ...state,
+      recipesProcessing: false,
       personalRecipes,
     };
   }),

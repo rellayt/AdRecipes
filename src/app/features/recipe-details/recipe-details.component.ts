@@ -7,6 +7,8 @@ import { GetDetailedRecipe } from '../../core/store/recipes/recipes.actions';
 import { selectDetailedRecipes } from '../../core/store/recipes/recipes.selectors';
 import { Observable } from 'rxjs';
 import { Recipe } from '../../core/models/recipes.model';
+import { map } from 'rxjs/operators';
+import { isNil } from '../../core/utility/is-null-or-undefined';
 
 @UntilDestroy()
 @Component({
@@ -15,7 +17,14 @@ import { Recipe } from '../../core/models/recipes.model';
   styleUrls: ['./recipe-details.component.scss'],
 })
 export class RecipeDetailsComponent implements OnInit {
-  recipe$: Observable<Recipe> = this.store.select(selectDetailedRecipes);
+  recipe$: Observable<Recipe> = this.store.select(selectDetailedRecipes).pipe(
+    map((recipe: Recipe) => ({
+      ...recipe,
+      preparingSteps: RecipeDetailsComponent.parsePreparingSteps(
+        recipe?.preparingSteps
+      ),
+    }))
+  );
 
   constructor(
     private store: Store<RootState>,
@@ -26,5 +35,11 @@ export class RecipeDetailsComponent implements OnInit {
     this.activatedRoute.params
       .pipe(untilDestroyed(this))
       .subscribe(({ id }) => this.store.dispatch(GetDetailedRecipe({ id })));
+  }
+
+  private static parsePreparingSteps(
+    value: string[] | string | undefined
+  ): string[] {
+    return isNil(value) || typeof value === 'string' ? [] : value;
   }
 }

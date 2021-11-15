@@ -5,11 +5,16 @@
   align-items: center;
   animation-name: opacity;
   animation-duration: 0.6s;
+  margin-top: 15rem;
+  @media (max-width: 768px) {
+    margin-top: 1rem;
+  }
 
   &__body {
     height: 100%;
     display: grid;
     grid-template-rows: repeat(4, 90px);
+
     app-button {
       align-self: flex-end;
     }

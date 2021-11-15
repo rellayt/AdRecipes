@@ -19,6 +19,7 @@ import { AuthInterceptorService } from '../core/interceptors/auth-interceptor.se
 import { TokenValidation } from '../core/store/auth/auth.actions';
 import { RecipeImageComponent } from './recipe-details/recipe-image/recipe-image.component';
 import { isNotUndefined } from '../core/utility/is-not-undefined';
+import { AdsenseModule } from 'ng2-adsense';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,11 @@ import { isNotUndefined } from '../core/utility/is-not-undefined';
     StoreModule.forRoot(appReducer),
     StoreModule.forFeature('recipes', appReducer.recipe),
     EffectsModule.forRoot(appEffects),
+    AdsenseModule.forRoot({
+      adClient: 'ca-pub-7640562161899788',
+      adSlot: 2930227358,
+      adtest: 'on',
+    }),
     SharedModule,
     CoreModule,
     FeaturesRoutingModule,

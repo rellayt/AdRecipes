@@ -5,6 +5,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FeaturesModule } from './features/features.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { SharedModule } from './shared/shared.module';
+import { AdsenseModule } from 'ng2-adsense';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [AppComponent],

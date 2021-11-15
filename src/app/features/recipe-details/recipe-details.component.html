@@ -1,8 +1,25 @@
 <app-base-feature-wrapper class='recipe-details'>
   <div header>Detailed Recipe</div>
   <div *ngIf='(recipe$ | async) as recipe' class='recipe-details__content'>
-    <app-recipe-image [authorName]='recipe.authorName' [name]='recipe.name' [time]='recipe.time' [photoUrl]='recipe.photoUrl'></app-recipe-image>
-    <p class='recipe-details__description'>{{recipe.description}}</p>
-    {{recipe.preparingSteps}}
+    <app-recipe-image [authorName]='recipe.authorName' [name]='recipe.name' [time]='recipe.time'
+                      [photoUrl]='recipe.photoUrl'></app-recipe-image>
+
+    <p class='recipe-details__created-at'>Created at {{recipe.createdAt | date: 'd/M/yy, HH:MM' }}</p>
+
+    <div class='recipe-details__description'>{{recipe.description}}</div>
+
+    <div class='recipe-details__preparing-steps'>
+      <ng-container *ngIf='recipe.preparingSteps.length > 0; else noPreparingSteps'>
+        <h2>Preparing steps</h2>
+        <div *ngFor='let preparingStep of recipe.preparingSteps; let i = index' class='recipe-details__preparing-step'>
+          <h4>{{i + 1}}.</h4>
+          <div>{{preparingStep}}</div>
+        </div>
+      </ng-container>
+
+      <ng-template #noPreparingSteps>
+        <h2>No preparing steps</h2>
+      </ng-template>
+    </div>
   </div>
 </app-base-feature-wrapper>
