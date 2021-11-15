@@ -1,12 +1,19 @@
-import { Body, Controller, HttpCode, Post } from '@nestjs/common';
+import { Body, Controller, Get, HttpCode, Post, Res } from '@nestjs/common';
 import { AuthService } from './auth.service';
 import { RegisterCredentials, SignInCredentials } from './auth.model';
-import { Observable } from 'rxjs';
+// @ts-ignore
+import { finalize, first, Observable, tap } from 'rxjs';
 import { UserWithCredentials } from '../users/user.model';
+import { UsersService } from '../users/users.service';
+import { auth } from 'firebase-admin/lib/auth/auth-namespace';
+import UserRecord = auth.UserRecord;
 
 @Controller('auth')
 export class AuthController {
-  constructor(private readonly authService: AuthService) {}
+  constructor(
+    private readonly authService: AuthService,
+    private readonly usersService: UsersService,
+  ) {}
 
   @Post('sign-in')
   @HttpCode(200)
@@ -20,5 +27,11 @@ export class AuthController {
     @Body() registerCredentials: RegisterCredentials,
   ): Observable<UserWithCredentials> {
     return this.authService.register(registerCredentials);
+  }
+
+  @Get('me') authMe(
+    @Res({ passthrough: true }) { locals },
+  ): Observable<UserWithCredentials> {
+    return this.usersService.findById(locals.userId);
   }
 }

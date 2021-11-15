@@ -3,6 +3,7 @@ import { RecipesService } from './recipes.service';
 import { RecipesController } from './recipes.controller';
 import { FirebaseService } from '../../database/services/firebase.service';
 import { UsersService } from '../users/users.service';
+import { FirebaseStorageService } from '../../database/services/firebase-storage.service';
 
 const collectionNameToken = { provide: 'collectionName', useValue: 'recipes' };
 
@@ -11,6 +12,7 @@ const collectionNameToken = { provide: 'collectionName', useValue: 'recipes' };
   providers: [
     RecipesService,
     FirebaseService,
+    FirebaseStorageService,
     collectionNameToken,
     UsersService,
   ],

@@ -8,5 +8,6 @@ export interface Recipe extends Uuid, TimeStamp, UserInformation {
   time: string;
   description: string;
   ingredients?: Ingredient[];
-  preparingSteps?: string[];
+  preparingSteps?: string[] | string;
+  photoUrl: string;
 }

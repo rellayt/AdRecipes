@@ -21,6 +21,10 @@ export class FirebaseAuthService extends FirebaseAuthAdmin {
     return getAuth();
   }
 
+  currentUser(id?: string) {
+    return FirebaseAuthService.auth.currentUser;
+  }
+
   signIn({ email, password }: SignInCredentials): Observable<User> {
     const loginPromise = signInWithEmailAndPassword(
       FirebaseAuthService.auth,

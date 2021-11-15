@@ -4,11 +4,11 @@ import {
   Injectable,
   NestMiddleware,
 } from '@nestjs/common';
-import { Request, Response, NextFunction } from 'express';
+import { NextFunction, Request, Response } from 'express';
 import { JwtTokenService } from '../features/auth/jwt-token.service';
 import { isUndefined } from '../base/utils/is-undefined';
 // @ts-ignore
-import { finalize, first } from 'rxjs';
+import { catchError, finalize, first } from 'rxjs';
 
 @Injectable()
 export class JwtTokenMiddleware implements NestMiddleware {
@@ -26,6 +26,12 @@ export class JwtTokenMiddleware implements NestMiddleware {
 
     this.tokenJwtService
       .verifyTokenAndReturnUserId(headerToken)
+      .pipe(
+        catchError((err, caught) => {
+          console.log('Inval1d t0ken');
+          throw new HttpException('Invalid token', HttpStatus.CONFLICT);
+        }),
+      )
       .subscribe((userId) => {
         res.locals.userId = userId;
         next();

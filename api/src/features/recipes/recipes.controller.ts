@@ -1,7 +1,17 @@
-import { Body, Controller, Get, Param, Post, Res } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Get,
+  Param,
+  Post,
+  Res,
+  UploadedFiles,
+  UseInterceptors,
+} from '@nestjs/common';
 import { RecipesService } from './recipes.service';
 import { Observable } from 'rxjs';
 import { Recipe } from './recipes.model';
+import { FilesInterceptor } from '@nestjs/platform-express';
 
 @Controller('recipes')
 export class RecipesController {
@@ -15,10 +25,12 @@ export class RecipesController {
     return this.recipesService.findById(id);
   }
 
-  @Post() create(
+  @Post() @UseInterceptors(FilesInterceptor('image')) create(
     @Body() recipeData: Recipe,
-    @Res() { locals },
-  ): Observable<Recipe> {
-    return this.recipesService.create(recipeData, locals.userId);
+    @Res({ passthrough: true }) { locals },
+    @UploadedFiles() file: Express.Multer.File,
+  ): Observable<Recipe> | null {
+    recipeData.preparingSteps = JSON.parse(recipeData.preparingSteps as string);
+    return this.recipesService.create(recipeData, locals.userId, file[0]);
   }
 }

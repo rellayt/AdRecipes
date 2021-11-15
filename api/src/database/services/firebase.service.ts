@@ -24,11 +24,8 @@ export class FirebaseService<T> extends FirebaseAuthAdmin {
 
   create(item: T): Observable<T> {
     return from(this.collection.add(item)).pipe(
-      tap((data) => console.log('data:  ', data)),
       switchMap((documentReference) => documentReference.get()),
-      tap((data) => console.log('data:  ', data)),
       map((snapshot) => snapshot.data() as T),
-      tap((data) => console.log('data:  ', data)),
     );
   }
 
