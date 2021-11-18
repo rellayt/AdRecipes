@@ -17,18 +17,22 @@
         <p>{{i + 1}}.</p>
         <app-input [control]='preparingStep'>Step</app-input>
       </div>
-      <app-button [isFullWidth]='true' (onClick)='addPreparingStep()'>Add preparing step</app-button>
+      <app-button [isDisabled]='preparingSteps.invalid' [isFullWidth]='true' (onClick)='addPreparingStep()'>Add preparing step</app-button>
       <app-button *ngIf='preparingSteps.length > 1' [isFullWidth]='true' [secondary]='true' (onClick)='removeLastPreparingStep()'>Remove preparing step</app-button>
     </div>
     <div class='add-recipe__submit'>
       <app-button [isProcessing]='createRecipeProcessing$ | async' [isDisabled]='this.addRecipeForm.invalid || !image' (onClick)='submit()'>Submit</app-button>
     </div>
+    <div class='add-recipe__ads'>
+      <app-ad-test fullWidthResponsive='true' height='150px'></app-ad-test>
+      <app-ad-test fullWidthResponsive='true' height='150px'></app-ad-test>
+    </div>
   </form>
-  <ng-adsense [adtest]='"on"'></ng-adsense>
-  <ng-adsense
-    [adClient]="'pub-3777768585143098'"
-    [adSlot]='3122538287'
-    [display]="'block'"
-    [width]='320'
-    [height]='108'></ng-adsense>
+<!--  <ng-adsense [adtest]='"on"'></ng-adsense>-->
+<!--  <ng-adsense-->
+<!--    [adClient]="'pub-3777768585143098'"-->
+<!--    [adSlot]='3122538287'-->
+<!--    [display]="'block'"-->
+<!--    [width]='320'-->
+<!--    [height]='108'></ng-adsense>-->
 </app-base-feature-wrapper>

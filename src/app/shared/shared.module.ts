@@ -16,6 +16,8 @@ import { RouterModule } from '@angular/router';
 import { BaseFeatureWrapperComponent } from './components/base-feature-wrapper/base-feature-wrapper.component';
 import { ImageUploadComponent } from './components/image-upload/image-upload.component';
 import { AdblockNotificationDialogComponent } from './components/adblock-notification-dialog/adblock-notification-dialog.component';
+import { AdTestComponent } from './components/ad-test/ad-test.component';
+import { MobileLinksDialogComponent } from './components/mobile-links-dialog/mobile-links-dialog.component';
 
 @NgModule({
   imports: [
@@ -38,6 +40,8 @@ import { AdblockNotificationDialogComponent } from './components/adblock-notific
     BaseFeatureWrapperComponent,
     ImageUploadComponent,
     AdblockNotificationDialogComponent,
+    AdTestComponent,
+    MobileLinksDialogComponent,
   ],
   exports: [
     FormsModule,
@@ -55,6 +59,7 @@ import { AdblockNotificationDialogComponent } from './components/adblock-notific
     RouterModule,
     BaseFeatureWrapperComponent,
     ImageUploadComponent,
+    AdTestComponent,
   ],
   providers: [SnackBarService],
 })

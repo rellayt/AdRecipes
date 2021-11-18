@@ -1,6 +1,13 @@
 <app-base-feature-wrapper class='personal-recipes'>
   <div header>My Recipes</div>
-  <div class='personal-recipes__list' *ngIf='(recipes$ | async) as latestRecipes'>
-    <app-recipe-tile *ngFor='let recipe of latestRecipes' [recipeTile]='recipe'></app-recipe-tile>
+  <div class='personal-recipes__list' *ngIf='(recipes$ | async) as recipesOrAds'>
+    <div *ngFor='let recipeOrAd of recipesOrAds'>
+      <ng-container *ngIf='checkIfItIsAd(recipeOrAd);else recipeTile'>
+        <app-ad-test fullWidthResponsive='true' height='340px'></app-ad-test>
+      </ng-container>
+      <ng-template #recipeTile>
+        <app-recipe-tile [recipeTile]='recipeOrAd'></app-recipe-tile>
+      </ng-template>
+    </div>
   </div>
 </app-base-feature-wrapper>

@@ -1,4 +1,11 @@
 <div class='base-feature'>
-  <div class='base-feature__header'><ng-content select='[header]'></ng-content></div>
+  <div class='base-feature__header'>
+    <div class='base-feature__header-content'>
+      <ng-content select='[header]'></ng-content>
+    </div>
+    <div class='base-feature__ad'>
+      <app-ad-test fullWidthResponsive='true' height='100px'></app-ad-test>
+    </div>
+  </div>
   <ng-content></ng-content>
 </div>

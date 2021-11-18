@@ -1,10 +1,37 @@
 .home {
-  &__recipes {
+  &__body {
     display: flex;
+    flex-direction: column;
+    justify-content: center;
     grid-column: 1/4;
     justify-self: center;
     animation-name: opacity;
     animation-duration: 0.6s;
+  }
+
+  &__ads {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 24px;
+
+    & > * {
+      margin: 16px 8px;
+    }
+
+    @media (max-width: 1368px) {
+      flex-direction: column;
+      align-items: center;
+
+      & > * {
+        margin: 4px 8px;
+        padding: 8px 16px;
+      }
+    }
+  }
+
+  &__recipes {
+    display: flex;
+    justify-content: center;
 
     & > * {
       margin: 8px;
@@ -41,4 +68,5 @@
       }
     }
   }
+
 }

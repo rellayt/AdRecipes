@@ -29,7 +29,15 @@
       </div>
     </ng-template>
   </section>
-  <div class='mobile-icon' [ngStyle]="{'opacity': (authProcessing$ | async) ? '0' : '1'}">
-    <mat-icon>menu</mat-icon>
+  <div class='mobile-icon-section' [ngStyle]="{'opacity': (authProcessing$ | async) ? '0' : '1'}">
+    <ng-container *ngIf='!(user$ | async); else mobileIcon'>
+      <ng-container *ngTemplateOutlet='unauthenticated'></ng-container>
+    </ng-container>
+    <ng-template #mobileIcon>
+      <button mat-icon-button class='mobile-icon' (click)='openMobileDialog()' #button>
+        <mat-icon>menu</mat-icon>
+      </button>
+    </ng-template>
   </div>
 </div>
+

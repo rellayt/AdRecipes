@@ -39,7 +39,7 @@ import { AdsenseModule } from 'ng2-adsense';
     AdsenseModule.forRoot({
       adClient: 'ca-pub-7640562161899788',
       adSlot: 2930227358,
-      adtest: 'on',
+      fullWidthResponsive: true,
     }),
     SharedModule,
     CoreModule,

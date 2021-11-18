@@ -48,12 +48,13 @@
       display: none;
     }
 
-    .auth-actions {
-      display: flex;
+  }
 
-      & > * {
-        margin: 0 5px;
-      }
+  .auth-actions {
+    display: flex;
+
+    & > * {
+      margin: 0 5px;
     }
   }
 
@@ -114,7 +115,7 @@
     }
   }
 
-  .mobile-icon {
+  .mobile-icon-section {
     display: none;
     grid-column: 2/3;
     opacity: 1;
@@ -123,9 +124,13 @@
     @media (max-width: 768px) {
       display: flex;
       flex-direction: row-reverse;
-      padding-right: 50px;
-      mat-icon {
-        font-size: 32px;
+      align-items: center;
+      .mobile-icon {
+        margin: 0 16px;
+        mat-icon {
+          font-size: 32px;
+          width: 32px;
+        }
       }
     }
   }

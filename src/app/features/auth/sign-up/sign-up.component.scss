@@ -1,13 +1,20 @@
+@import "../auth.scss";
+
+.route-container {
+  @include route-container;
+
+  .ad {
+    @include ad;
+  }
+}
+
 .sign-up {
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  animation-name: opacity;
-  animation-duration: 0.6s;
-  margin-top: 15rem;
-  @media (max-width: 768px) {
-    margin-top: 1rem;
+  @include auth;
+
+  app-card {
+    width: 100%;
+    display: flex;
+    justify-content: center;
   }
 
   &__body {

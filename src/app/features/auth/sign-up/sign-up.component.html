@@ -1,11 +1,21 @@
-<div class='sign-up'>
-  <app-card>
-    <div header>Sign Up</div>
-    <div class='sign-up__body'>
-      <app-input [control]="signUpForm.get('displayName')">Name</app-input>
-      <app-input [control]="signUpForm.get('email')">E-mail</app-input>
-      <app-input type='password' [control]="signUpForm.get('password')">Password</app-input>
-      <app-button [isProcessing]='isProcessing' [isDisabled]='signUpForm.invalid' isFullWidth='true' (onClick)='handleRegistration()'>Register</app-button>
-    </div>
-  </app-card>
+<div class='route-container'>
+  <div class='ad'>
+    <app-ad-test [fullWidthResponsive]='true' height='100%'></app-ad-test>
+  </div>
+  <div class='sign-up'>
+    <app-card>
+      <div header>Sign Up</div>
+      <div class='sign-up__body'>
+        <app-input [control]="signUpForm.get('displayName')">Name</app-input>
+        <app-input [control]="signUpForm.get('email')">E-mail</app-input>
+        <app-input type='password' [control]="signUpForm.get('password')">Password</app-input>
+        <app-button [isProcessing]='isProcessing' [isDisabled]='signUpForm.invalid' isFullWidth='true'
+                    (onClick)='handleRegistration()'>Register
+        </app-button>
+      </div>
+    </app-card>
+  </div>
+  <div class='ad'>
+    <app-ad-test [fullWidthResponsive]='true' height='100%'></app-ad-test>
+  </div>
 </div>

@@ -5,23 +5,42 @@
   animation-name: opacity;
   animation-duration: 0.6s;
 
+  @media (max-width: 768px) {
+    grid-template-rows: 190px calc(100% - 190px);
+  }
+
   &__header {
     font-weight: 600;
     margin-left: 48px;
     font-size: 32px;
     grid-column: 1/4;
+    grid-row: 1/2;
+    display: grid;
+    grid-template-columns: 30% 70%;
+
     @media (max-width: 1368px) {
       align-self: center;
       margin-left: 24px;
 
     }
     @media (max-width: 768px) {
-      margin: 0;
+      grid-template-columns: 100%;
+      grid-template-rows: 30% 70%;
+      margin-left: 0;
+      margin-bottom: 8px;
+    }
+  }
+
+  &__header-content {
+    align-self: center;
+    @media (max-width: 768px) {
       justify-self: center;
     }
   }
 
-  @media (max-width: 768px) {
-    grid-template-rows: 100px calc(100% - 100px);
+  &__ad {
+    @media (max-width: 768px) {
+      margin-top: 24px;
+    }
   }
 }
